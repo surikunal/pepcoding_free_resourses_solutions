@@ -6,13 +6,13 @@ public class Main {
         Scanner scn = new Scanner(System.in);
 
         int n = scn.nextInt();
-        int nst = 1;
-        
+        int nst = n;
+
         for (int r = 1; r <= n; r++) {
-            for (int cst = 1; cst <= nst; cst++) {
+            for (int cst = nst; cst >= 1; cst--) {
                 System.out.print("*" + '\t');
             }
-            nst++;
+            nst--;
             System.out.println();
         }
 
