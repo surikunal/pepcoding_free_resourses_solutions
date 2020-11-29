@@ -1,7 +1,6 @@
+import java.io.*;
 import java.util.*;
-
-public class Main {
-
+public class grading_system {
     public static void main(String[] args) {
         // input - don't change this code
         Scanner scn = new Scanner(System.in);
