@@ -11,8 +11,8 @@ public class Main {
             }
         }
 
-        int idx = 0;
         for (int i = 0; i < arr.length; i++) {
+            int idx = 0;
             int min = arr[i][0];
             for (int j = 1; j < arr[0].length; j++) {
                 if (min > arr[i][j]) {
@@ -21,9 +21,9 @@ public class Main {
                 }
             }
 
-            System.out.println("idx  " + idx);
-            System.out.println("------");
-            System.out.println(min);
+            // System.out.println("idx  " + idx);
+            // System.out.println("------");
+            // System.out.println(min);
 
             int max = arr[i][idx];
             for (int in = 0; in < arr.length; in ++) {
@@ -31,40 +31,13 @@ public class Main {
                     max = arr[ in ][idx];
                 }
             }
-            System.out.println(max);
+            // System.out.println(max);
 
             if (min == max) {
                 System.out.println(max);
-                break;
+                return;
             }
         }
+        System.out.println("Invalid input");
     }
 }
-
-
-5
-21
-22
-28
-31
-32
-41
-42
-55
-2
-77
-33
-99
-54
-11
-101
-42
-43
-46
-49
-21
-134
-167
-214
-324
-456
