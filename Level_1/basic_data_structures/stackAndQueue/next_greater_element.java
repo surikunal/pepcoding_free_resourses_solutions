@@ -5,7 +5,7 @@ public class Main {
     public static void display(int[] a) {
         StringBuilder sb = new StringBuilder();
 
-        for (int val: a) {
+        for (int val : a) {
             sb.append(val + "\n");
         }
         System.out.println(sb);
@@ -27,23 +27,23 @@ public class Main {
     public static int[] solve(int[] arr) {
         int[] ans = new int[arr.length];
         Stack<Integer> st = new Stack<>();
-        
+
         ans[arr.length - 1] = -1;
         st.push(arr[arr.length - 1]);
         for (int i = arr.length - 2; i >= 0; i--) {
             while (st.size() > 0 && st.peek() <= arr[i]) {
                 st.pop();
             }
-            
+
             if (st.size() == 0) {
                 ans[i] = -1;
             } else {
                 ans[i] = st.peek();
             }
-            
+
             st.push(arr[i]);
         }
-        
+
         return ans;
     }
 }
