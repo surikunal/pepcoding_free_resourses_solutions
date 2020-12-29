@@ -1,7 +1,7 @@
 import java.util.*;
-public class Main{
+public class print_all_primes_till_n{
+    public static Scanner scn = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner scn = new Scanner(System.in);
         int low = scn.nextInt();
         int high = scn.nextInt();
         

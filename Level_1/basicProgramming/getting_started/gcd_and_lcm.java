@@ -1,5 +1,5 @@
 import java.util.*;
-public class Main {
+public class gcd_and_lcm {
     public static Scanner scn = new Scanner(System.in);
     public static void main(String[] args) {
         int n1 = scn.nextInt();

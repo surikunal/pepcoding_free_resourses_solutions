@@ -1,7 +1,7 @@
 import java.util.*;
-public class Main {
+public class reverse_a_number {
+    public static Scanner scn = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
 
         while (n != 0) {
