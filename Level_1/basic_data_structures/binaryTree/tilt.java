@@ -79,18 +79,34 @@ public class Main {
         display(node.right);
     }
 
-    public static Node transBackFromLeftClonedTree(Node node) {
+    public static int height(Node node) {
         if (node == null) {
-            return null;
+            return -1;
         }
 
-        Node lnn = transBackFromLeftClonedTree(node.left.left);
-        Node rn = transBackFromLeftClonedTree(node.right);
+        int lh = height(node.left);
+        int rh = height(node.right);
 
-        node.left = lnn;
-        node.right = rn;
+        int th = Math.max(lh, rh) + 1;
+        return th;
+    }
 
-        return node;
+    static int tilt = 0;
+
+    public static int tilt(Node node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int ls = tilt(node.left);
+        int rs = tilt(node.right);
+
+        int ltilt = Math.abs(ls - rs);
+
+        tilt += ltilt;
+
+        int ts = ls + rs + node.data;
+        return ts;
     }
 
     public static void main(String[] args) throws Exception {
@@ -107,7 +123,8 @@ public class Main {
         }
 
         Node root = construct(arr);
-        root = transBackFromLeftClonedTree(root);
-        display(root);
+
+        tilt(root);
+        System.out.println(tilt);
     }
 }

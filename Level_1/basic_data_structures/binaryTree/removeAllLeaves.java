@@ -79,16 +79,17 @@ public class Main {
         display(node.right);
     }
 
-    public static Node transBackFromLeftClonedTree(Node node) {
+    public static Node removeLeaves(Node node) {
         if (node == null) {
             return null;
         }
 
-        Node lnn = transBackFromLeftClonedTree(node.left.left);
-        Node rn = transBackFromLeftClonedTree(node.right);
+        if (node.left == null && node.right == null) {
+            return null;
+        }
 
-        node.left = lnn;
-        node.right = rn;
+        node.left = removeLeaves(node.left);
+        node.right = removeLeaves(node.right);
 
         return node;
     }
@@ -107,7 +108,7 @@ public class Main {
         }
 
         Node root = construct(arr);
-        root = transBackFromLeftClonedTree(root);
+        root = removeLeaves(root);
         display(root);
     }
 }

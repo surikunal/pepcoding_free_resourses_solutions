@@ -79,18 +79,18 @@ public class Main {
         display(node.right);
     }
 
-    public static Node transBackFromLeftClonedTree(Node node) {
+    public static void printSingleChildNodes(Node node, Node parent) {
         if (node == null) {
-            return null;
+            return;
         }
 
-        Node lnn = transBackFromLeftClonedTree(node.left.left);
-        Node rn = transBackFromLeftClonedTree(node.right);
+        if ((parent != null && parent.left == node && parent.right == null)
+                || (parent != null && parent.right == node && parent.left == null)) {
+            System.out.println(node.data);
+        }
 
-        node.left = lnn;
-        node.right = rn;
-
-        return node;
+        printSingleChildNodes(node.left, node);
+        printSingleChildNodes(node.right, node);
     }
 
     public static void main(String[] args) throws Exception {
@@ -107,7 +107,6 @@ public class Main {
         }
 
         Node root = construct(arr);
-        root = transBackFromLeftClonedTree(root);
-        display(root);
+        printSingleChildNodes(root, null);
     }
 }

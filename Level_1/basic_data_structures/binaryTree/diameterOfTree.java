@@ -79,18 +79,39 @@ public class Main {
         display(node.right);
     }
 
-    public static Node transBackFromLeftClonedTree(Node node) {
+    public static int height(Node node) {
         if (node == null) {
-            return null;
+            return -1;
         }
 
-        Node lnn = transBackFromLeftClonedTree(node.left.left);
-        Node rn = transBackFromLeftClonedTree(node.right);
+        int lh = height(node.left);
+        int rh = height(node.right);
 
-        node.left = lnn;
-        node.right = rn;
+        int th = Math.max(lh, rh) + 1;
+        return th;
+    }
 
-        return node;
+    static class DiaPair {
+        int dia;
+        int h;
+    }
+
+    public static DiaPair diameter2(Node node) {
+        if (node == null) {
+            DiaPair base = new DiaPair();
+            base.h = -1;
+            base.dia = 0;
+            return base;
+        }
+
+        DiaPair l = diameter2(node.left);
+        DiaPair r = diameter2(node.right);
+
+        DiaPair np = new DiaPair();
+        np.h = Math.max(l.h, r.h) + 1;
+        np.dia = Math.max(l.h + r.h + 2, Math.max(l.dia, r.dia));
+
+        return np;
     }
 
     public static void main(String[] args) throws Exception {
@@ -107,7 +128,12 @@ public class Main {
         }
 
         Node root = construct(arr);
-        root = transBackFromLeftClonedTree(root);
-        display(root);
+
+        // int diameter = 0;
+        // diameter = diameter1(root);
+        // System.out.println(diameter);
+
+        DiaPair ans = diameter2(root);
+        System.out.println(ans.dia);
     }
 }
